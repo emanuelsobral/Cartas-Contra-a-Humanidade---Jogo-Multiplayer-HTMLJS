@@ -64,7 +64,7 @@ body {
     place-items: center; /* Vertically and horizontally centers content */
     min-height: 90px; /* Taller */
     overflow-wrap: break-word; /* Standard property for preventing overflow */
-    word-break: break-all; /* More aggressive breaking for long words without spaces */
+    hyphens: auto; /* Allow automatic hyphenation for better text flow */
     transform-origin: center center; /* Ensure consistent origin for transforms */
     min-width: 0; /* Allows the card to shrink properly within a grid/flex container */
 }
