@@ -1,0 +1,15 @@
+# Firebase config file - DO NOT COMMIT
+firebase-config.js
+
+# General
+.DS_Store
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode/
+*.swp

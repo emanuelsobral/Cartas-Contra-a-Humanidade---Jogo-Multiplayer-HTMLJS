@@ -1,0 +1,171 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0d1117; /* Darker background */
+    color: #e2e8f0; /* Light text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+#app {
+    width: 100%;
+    max-width: 800px;
+    min-height: 100vh; /* Full height on small screens */
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem; /* Increased padding */
+    background-color: #161b22; /* Slightly lighter dark background */
+    border-radius: 1.5rem; /* More rounded corners */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+    border: 1px solid #2f363d; /* Subtle border */
+}
+.card-black {
+    background-color: #101318; /* Even darker for black card */
+    border: 2px solid #4a5568;
+    color: #ffffff;
+    padding: 1.5rem; /* Increased padding */
+    border-radius: 0.75rem; /* More rounded */
+    text-align: center;
+    font-size: 1.5rem; /* Larger font */
+    font-weight: 700; /* Bold */
+    min-height: 120px; /* Taller */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Enhanced 3D-like shadow for black card */
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.4), /* Inner soft shadow */
+        0 10px 20px rgba(0, 0, 0, 0.3), /* Main shadow */
+        0 20px 40px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Smooth transition */
+    transform-origin: center center; /* Ensure consistent origin for transforms */
+}
+/* No hover effect for the main black card as it's static */
+
+.card-white {
+    background-color: #f8f8f8; /* Off-white */
+    color: #202020; /* Darker text for contrast */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    /* Enhanced 3D-like shadow for white card */
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.2), /* Inner soft shadow */
+        0 8px 15px rgba(0, 0, 0, 0.15), /* Main shadow */
+        0 15px 30px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+    border: 2px solid #d1d5db; /* Light grey border */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    text-align: center;
+    font-size: 0.95rem; /* Slightly larger */
+    font-weight: 600; /* More emphasis */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90px; /* Taller */
+    word-break: break-word; /* Ensure long words break */
+    transform-origin: center center; /* Ensure consistent origin for transforms */
+}
+.card-white:hover {
+    transform: translateY(-8px) scale(1.03) rotateX(2deg) rotateY(-2deg); /* Lift, slight enlarge, and subtle 3D tilt */
+    box-shadow: 
+        0 6px 10px rgba(0, 0, 0, 0.3), /* Enhanced inner soft shadow */
+        0 12px 25px rgba(0, 0, 0, 0.25), /* Enhanced main shadow */
+        0 25px 50px rgba(0, 0, 0, 0.2); /* Enhanced deeper shadow */
+}
+.card-white.selected {
+    border-color: #6366f1; /* Tailwind indigo-500 */
+    box-shadow: 0 0 0 4px #818cf8, /* Stronger highlight border */
+                0 5px 10px -3px rgba(0, 0, 0, 0.2), 
+                0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    transform: scale(1.04); /* Slightly more pronounced when selected */
+}
+.card-white.winning {
+    background-color: #10b981; /* Tailwind emerald-500 */
+    color: #ffffff;
+    border-color: #059669; /* Darker emerald */
+    box-shadow: 0 0 0 4px #34d399, /* Winning highlight */
+                0 5px 10px -3px rgba(0, 0, 0, 0.2), 
+                0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    transform: scale(1.06); /* Even more pronounced for winning card */
+}
+#modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85); /* More opaque */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 1.5rem;
+}
+#modal-content {
+    background-color: #1e293b; /* bg-slate-800 */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); /* Stronger modal shadow */
+    max-width: 28rem; /* Wider modal */
+    width: 100%;
+    border: 1px solid #334155; /* border-slate-700 */
+}
+.hidden {
+    display: none !important;
+}
+#timer-container {
+    width: 100%;
+    background-color: #4a5568; /* bg-gray-700 */
+    border-radius: 9999px; /* Full rounded */
+    height: 10px; /* Bar height */
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden; /* Hide overflow from inner bar */
+}
+#timer-progress-bar {
+    height: 100%;
+    background-color: #facc15; /* yellow-400 */
+    width: 100%; /* Start full */
+    transition: width 1s linear; /* Smooth transition for width change */
+    border-radius: 9999px; /* Full rounded */
+}
+#timer-text {
+    font-size: 1.8rem; /* Larger font */
+    font-weight: 800; /* Extra bold */
+    color: #facc15; /* Tailwind yellow-400 */
+    text-align: center;
+    margin-bottom: 0.5rem; /* Space between text and bar */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow */
+}
+/* Custom styles for player status indicators */
+.player-status-tag {
+    transition: all 0.2s ease-in-out;
+    border-width: 2px; /* Ensure border is visible */
+    padding: 0.5rem 0.8rem; /* More padding for better look */
+    border-radius: 9999px; /* Fully rounded */
+    font-size: 0.9rem; /* Slightly larger font */
+}
+.player-status-tag.played {
+    background-color: #facc15; /* yellow-400 */
+    color: #1f2937; /* gray-900 */
+    border-color: #fbbf24; /* yellow-500 */
+}
+.player-status-tag.voted {
+    background-color: #6366f1; /* indigo-500 */
+    color: #ffffff;
+    border-color: #818cf8; /* indigo-300 */
+}
+.player-status-tag.connected {
+    background-color: #10b981; /* emerald-500 */
+    color: #ffffff;
+    border-color: #059669; /* emerald-700 */
+}
+.player-status-tag.disconnected {
+    background-color: #ef4444; /* red-500 */
+    color: #ffffff;
+    border-color: #dc2626; /* red-700 */
+}
+.player-status-tag.ai {
+    background-color: #3b82f6; /* blue-500 */
+    color: #ffffff;
+    border-color: #2563eb; /* blue-700 */
+}
