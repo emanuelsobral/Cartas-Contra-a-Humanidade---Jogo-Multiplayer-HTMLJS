@@ -64,8 +64,9 @@ body {
     place-items: center; /* Vertically and horizontally centers content */
     min-height: 90px; /* Taller */
     overflow-wrap: break-word; /* Standard property for preventing overflow */
-    word-break: break-word; /* Fallback for maximum compatibility */
+    word-break: break-all; /* More aggressive breaking for long words without spaces */
     transform-origin: center center; /* Ensure consistent origin for transforms */
+    min-width: 0; /* Allows the card to shrink properly within a grid/flex container */
 }
 .card-white:hover {
     transform: translateY(-8px) scale(1.03) rotateX(2deg) rotateY(-2deg); /* Lift, slight enlarge, and subtle 3D tilt */
