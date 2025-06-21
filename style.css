@@ -60,11 +60,11 @@ body {
     text-align: center;
     font-size: 0.95rem; /* Slightly larger */
     font-weight: 600; /* More emphasis */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid; /* Use grid for robust centering */
+    place-items: center; /* Vertically and horizontally centers content */
     min-height: 90px; /* Taller */
-    word-break: break-word; /* Ensure long words break */
+    overflow-wrap: break-word; /* Standard property for preventing overflow */
+    word-break: break-word; /* Fallback for maximum compatibility */
     transform-origin: center center; /* Ensure consistent origin for transforms */
 }
 .card-white:hover {
